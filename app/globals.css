@@ -2,26 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer utilities {
+  .background_light200_dark_300 {
+    @apply bg-light-200 dark:bg-[#0C1014];
+  }
+  .background_light300_dark_300 {
+    @apply dark:bg-dark-300 bg-light-300;
+  }
+  .background_light400_dark_200 {
+    @apply dark:bg-dark-200 bg-light-400;
+  }
+  .text_light100_dark300 {
+    @apply text-dark-100 dark:text-light-200;
+  }
+  .flex_col {
+    @apply flex flex-col;
+  }
+  .flex_center {
+    @apply flex justify-center;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.gradient-text {
+  
+          /** TEXT GRADIENT */ color: #F45E84; background-image: -webkit-linear-gradient(45deg, #F45E84 19%, #757FF2 64%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;
+          
+        
+}
+.gradient-text-2 {
+  /** TEXT GRADIENT */
+  color: #4d4cfd;
+  background-image: -webkit-linear-gradient(45deg, #4d4cfd 11%, #99f8d0 67%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
 }
