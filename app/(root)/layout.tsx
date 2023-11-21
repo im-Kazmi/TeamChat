@@ -11,7 +11,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <div className=" background_light200_dark_300 flex min-h-screen justify-between">
       <ServersSidebar />
       <LeftSidebar />
-      <section className=" p-5">{children}</section>
+      <div className=" p-5 w-full min-h-screen">{children}</div>
       <RightSidebar />
     </div>
   );

@@ -3,11 +3,10 @@ import { Button } from "../ui/button";
 import { CiSearch } from "react-icons/ci";
 import { fakeChannels } from "@/constants";
 import Image from "next/image";
-import { Users } from "lucide-react";
 
 const LeftSidebar = () => {
   return (
-    <div className=" w-60 max-md:hidden min-h-screen ml-14  bg-light-400 dark:bg-[#1D2127] ">
+    <div className=" w-[400px] max-md:hidden min-h-screen ml-20  bg-light-400 dark:bg-[#1D2127] ">
       <div className=" mt-5 flex flex-col px-3">
         <div className="flex flex-col w-full">
           <div className="w-full rounded-md flex gap-2 bg-light-200 dark:bg-dark-400 px-3 py-2">
@@ -57,7 +56,7 @@ const LeftSidebar = () => {
                   <div className=" flex">
                     {channel.users.slice(0, 3).map((user) => (
                       <p key={user.id} className=" text text-[10px] ">
-                        {user.username}
+                        {user.username} ,
                       </p>
                     ))}
                   </div>
