@@ -26,12 +26,12 @@ export const fakeChannels = [
       {
         id: 101,
         username: "User1",
-        avatar: "https://placekitten.com/50/50",
+        avatar: "/avatars/a.jpg",
       },
       {
         id: 102,
         username: "User2",
-        avatar: "https://placekitten.com/51/51",
+        avatar: "/avatars/b.jpg",
       },
     ],
   },
@@ -43,13 +43,28 @@ export const fakeChannels = [
     users: [
       {
         id: 201,
-        username: "User3",
-        avatar: "https://placekitten.com/52/52",
+        username: "Abid",
+        avatar: "/avatars/c.jpg",
       },
       {
         id: 202,
-        username: "User4",
-        avatar: "https://placekitten.com/53/53",
+        username: "Kazmi",
+        avatar: "/avatars/d.jpg",
+      },
+      {
+        id: 203,
+        username: "Izhar",
+        avatar: "/avatars/f.jpg",
+      },
+      {
+        id: 204,
+        username: "Kivy",
+        avatar: "/avatars/g.jpg",
+      },
+      {
+        id: 205,
+        username: "Smith",
+        avatar: "/avatars/h.png",
       },
     ],
   },
@@ -62,12 +77,12 @@ export const fakeChannels = [
       {
         id: 301,
         username: "User5",
-        avatar: "https://placekitten.com/54/54",
+        avatar: "/avatars/i.jpg",
       },
       {
         id: 302,
         username: "User6",
-        avatar: "https://placekitten.com/55/55",
+        avatar: "/avatars/k.jpg",
       },
     ],
   },
