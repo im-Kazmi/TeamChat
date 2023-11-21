@@ -1,0 +1,77 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String
+  name      String
+  imageUrl  String
+  email     String    @unique
+  servers   Server[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  member    Member[]
+  channels  Channel[]
+}
+
+model Server {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  imageUrl   String
+  inviteCode String
+  profileId  String    @db.ObjectId
+  profile    Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now())
+  members    Member[]
+  channels   Channel[]
+
+  @@index([profileId])
+}
+
+model Member {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  role      MemberRole @default(GUEST)
+  profileId String     @db.ObjectId
+  profile   Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  serverId  String     @db.ObjectId
+  server    Server     @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+
+  @@index([profileId])
+  @@index([serverId])
+}
+
+model Channel {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  type      ChannelType @default(TEXT)
+  profileId String      @db.ObjectId
+  profile   Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  serverId  String      @db.ObjectId
+  server    Server      @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @default(now())
+
+  @@index([serverId])
+  @@index([profileId])
+}
+
+enum MemberRole {
+  ADMIN
+  MODERATOR
+  GUEST
+}
+
+enum ChannelType {
+  TEXT
+  AUDIO
+  VIDEO
+}
