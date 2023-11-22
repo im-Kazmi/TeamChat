@@ -12,8 +12,12 @@ interface ModalProps {
   title: string | ReactElement;
   trigger: string | ReactElement;
   children?: string | ReactNode;
+  isCompleted?: any;
 }
-const Modal = ({ title, trigger, children }: ModalProps) => {
+const Modal = ({ title, trigger, children, isCompleted }: ModalProps) => {
+  if (isCompleted) {
+    return <div>{trigger}</div>;
+  }
   return (
     <div>
       <Dialog>

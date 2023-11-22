@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { UploadFileResponse } from "uploadthing/client";
 import "@uploadthing/react/styles.css";
 import { UploadDropzone } from "@/lib/uploadThing";
 import Image from "next/image";
