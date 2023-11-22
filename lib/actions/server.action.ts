@@ -29,6 +29,10 @@ export async function createServer(params: CreateServer) {
           create: [{ profileId: userId, role: MemberRole.ADMIN }],
         },
       },
+      include: {
+        members: true,
+        channels: true,
+      },
     });
 
     revalidatePath("/app");
