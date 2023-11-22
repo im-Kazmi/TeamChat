@@ -9,9 +9,9 @@ import {
 } from "react";
 
 interface IThemeContext {
-  theme: string;
+  theme: string | undefined;
   setTheme: (theme: string) => void;
-  handleThemeChange: () => void;
+  handleThemeChange: () => void | undefined;
 }
 const themeContext = createContext<IThemeContext | undefined>(undefined);
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
