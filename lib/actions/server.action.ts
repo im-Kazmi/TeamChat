@@ -1,7 +1,8 @@
 "use server";
 import prisma from "@/prisma";
 import { auth } from "@clerk/nextjs";
-import { isError } from "util";
+import { MemberRole } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { v4 as uuid } from "uuid";
 interface CreateServer {
   name: string;
@@ -25,10 +26,27 @@ export async function createServer(params: CreateServer) {
           create: [{ name: "general", profileId: userId as string }],
         },
         members: {
-          create: [{ profileId: userId, role: "ADMIN" }],
+          create: [{ profileId: userId, role: MemberRole.ADMIN }],
         },
       },
+      include: {
+        members: true,
+        channels: true,
+      },
     });
+
+    revalidatePath("/app");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getServers() {
+  try {
+    const servers = await prisma.server.findMany();
+
+    console.log(servers);
+    return servers;
   } catch (error) {
     console.log(error);
   }

@@ -3,7 +3,7 @@ import React from "react";
 
 interface IServer {
   id: string;
-  image: string;
+  imageUrl?: string;
   name: string;
 }
 const ServerCard = ({ server }: { server: IServer }) => {
@@ -13,7 +13,7 @@ const ServerCard = ({ server }: { server: IServer }) => {
       className="  rounded-full cursor-pointer w-fit mx-auto ring-2 ring-light-500  "
     >
       <Image
-        src={server.image}
+        src={server?.imageUrl as string}
         width={40}
         height={40}
         alt={server.name}

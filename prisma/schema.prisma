@@ -7,12 +7,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Profile {
+model user {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   clerkId    String @unique
   name      String
   imageUrl  String
   email     String    @unique
+  password     String? 
   servers   Server[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now())
@@ -25,27 +26,27 @@ model Server {
   name       String
   imageUrl   String
   inviteCode String
-  profileId  String   
-  profile    Profile   @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  userId  String  @db.ObjectId 
+  user    user   @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @default(now())
-  members    Member[]
+  members    Member[]  
   channels   Channel[]
 
-  @@index([profileId])
+  @@index([userId])
 }
 
 model Member {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   role      MemberRole @default(GUEST)
-  profileId String   
-  profile   Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  userId String   @db.ObjectId
+  user   user    @relation(fields: [userId], references: [id], onDelete: Cascade)
   serverId  String     @db.ObjectId
   server    Server     @relation(fields: [serverId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
 
-  @@index([profileId])
+  @@index([userId])
   @@index([serverId])
 }
 
@@ -53,15 +54,15 @@ model Channel {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   type      ChannelType @default(TEXT)
-  profileId String      
-  profile   Profile     @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  userId String @db.ObjectId     
+  user   user     @relation(fields: [userId], references: [id], onDelete: Cascade)
   serverId  String      @db.ObjectId
   server    Server      @relation(fields: [serverId], references: [id], onDelete: Cascade)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @default(now())
 
   @@index([serverId])
-  @@index([profileId])
+  @@index([userId])
 }
 
 enum MemberRole {
