@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const LeftSidebar = () => {
   return (
-    <div className=" w-[400px] max-md:hidden min-h-screen ml-20  bg-light-400 dark:bg-[#1D2127] ">
+    <div className=" w-[400px] max-md:hidden min-h-screen ml-20  bg-light-400 dark:bg-[#1D2129] ">
       <div className=" mt-5 flex flex-col px-3">
         <div className="flex flex-col w-full">
           <div className="w-full rounded-md flex gap-2 bg-light-200 dark:bg-dark-400 px-3 py-2">
@@ -53,13 +53,13 @@ const LeftSidebar = () => {
                   <h1 className="  text-dark-300 my-auto text-sm font-semibold first-letter:uppercase dark:text-light-200">
                     {channel.name}
                   </h1>
-                  <div className=" flex">
+                  {/* <div className=" flex">
                     {channel.users.slice(0, 3).map((user) => (
                       <p key={user.id} className=" text text-[10px] ">
                         {user.username} ,
                       </p>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             );

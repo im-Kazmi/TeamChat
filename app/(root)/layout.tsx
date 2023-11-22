@@ -8,7 +8,7 @@ import React from "react";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className=" background_light200_dark_300 flex min-h-screen justify-between">
+    <div className=" bg-light-200 dark:bg-[#13181E] flex min-h-screen justify-between">
       <ServersSidebar />
       <LeftSidebar />
       <div className=" p-5 w-full min-h-screen">{children}</div>

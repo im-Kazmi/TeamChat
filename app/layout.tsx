@@ -3,6 +3,7 @@ import { Inter, Questrial, Raleway, Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ThemeContextProvider from "@/context/ThemeContext";
+import { dark } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 const questrial = Inter({
@@ -23,7 +24,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ClerkProvider>
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+        }}
+      >
         <body className={questrial.className}>
           <ThemeContextProvider>{children}</ThemeContextProvider>
         </body>

@@ -2,27 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .background_light200_dark_300 {
-    @apply bg-light-200 dark:bg-[#0C1014];
-  }
-  .background_light300_dark_300 {
-    @apply dark:bg-dark-300 bg-light-300;
-  }
-  .background_light400_dark_200 {
-    @apply dark:bg-dark-200 bg-light-400;
-  }
-  .text_light100_dark300 {
-    @apply text-dark-100 dark:text-light-200;
-  }
-  .flex_col {
-    @apply flex flex-col;
-  }
-  .flex_center {
-    @apply flex justify-center;
-  }
-}
-
 .gradient-text {
   
           /** TEXT GRADIENT */ color: #F45E84; background-image: -webkit-linear-gradient(45deg, #F45E84 19%, #757FF2 64%); background-clip: text; -webkit-background-clip: text; text-fill-color: transparent; -webkit-text-fill-color: transparent;

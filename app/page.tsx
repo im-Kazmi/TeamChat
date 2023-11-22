@@ -1,7 +1,10 @@
+"use client";
 import Navbar from "@/components/shared/Navbar";
+import { auth, useUser } from "@clerk/nextjs";
 import { Raleway, Actor, Cabin } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const questrial = Cabin({
   subsets: ["latin"],
@@ -10,8 +13,15 @@ const questrial = Cabin({
   style: "normal",
 });
 export default function Home() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+
+  // if (isSignedIn) {
+  //   router.push("/app");
+  // }
+
   return (
-    <main className="  background_light200_dark_300  min-h-screen lg:px-40 max-md:px-20 md:px-20 max-sm:px-10 flex flex-col">
+    <main className="  bg-light-200 dark:bg-dark-300  min-h-screen lg:px-40 max-md:px-20 md:px-20 max-sm:px-10 flex flex-col">
       <Navbar />
       <div className=" m-auto flex flex-col">
         <h1

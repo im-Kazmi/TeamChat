@@ -9,7 +9,7 @@ generator client {
 
 model Profile {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String
+  clerkId    String @unique
   name      String
   imageUrl  String
   email     String    @unique
@@ -25,8 +25,8 @@ model Server {
   name       String
   imageUrl   String
   inviteCode String
-  profileId  String    @db.ObjectId
-  profile    Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId  String   
+  profile    Profile   @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @default(now())
   members    Member[]
@@ -38,8 +38,8 @@ model Server {
 model Member {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   role      MemberRole @default(GUEST)
-  profileId String     @db.ObjectId
-  profile   Profile    @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String   
+  profile   Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   serverId  String     @db.ObjectId
   server    Server     @relation(fields: [serverId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
@@ -53,8 +53,8 @@ model Channel {
   id        String      @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   type      ChannelType @default(TEXT)
-  profileId String      @db.ObjectId
-  profile   Profile     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profileId String      
+  profile   Profile     @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   serverId  String      @db.ObjectId
   server    Server      @relation(fields: [serverId], references: [id], onDelete: Cascade)
   createdAt DateTime    @default(now())
